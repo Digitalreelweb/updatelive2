@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        @font-face {
+            font-family: 'Akira Expanded';
+            src: url('Akira Expanded Demo.woff2') format('woff2'),
+                 url('Akira Expanded Demo.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'Bebas Neue';
+            src: url('BebasNeue-Regular.woff2') format('woff2'),
+                 url('BebasNeue-Regular.woff') format('woff');
+        }
+
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            border: none;
+            opacity: 0.25; /* Reduce video opacity to 25% */
+        }
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+        .header-logo img {
+            max-width: 600px; /* Increase logo size */
+            height: auto;
+            margin: 0 auto 2rem;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .buttons button {
+            font-family: 'Akira Expanded', sans-serif;
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem;
+            width: 250px;
+        }
+        .buttons button:hover {
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="videoPlayer" allow="autoplay; encrypted-media"></iframe>
+    <div class="content">
+        <div class="header-logo">
+            <img src="image0.png" alt="Digital Reel Logo">
+        </div>
+        <div class="buttons">
+            <button onclick="window.location.href='treatments.html'">A Package (TREATMENT VISUAL)</button>
+            <button onclick="window.location.href='run_and_gun.html'">B Package - (RUN & GUN)</button>
+            <button onclick="window.location.href='perfect_aim.html'">Perfect Aim (Mic Performance & Interview)</button>
+        </div>
+    </div>
+    <script>
+        const videos = [
+            "https://www.youtube.com/embed/b0Zm3DOoJn8?autoplay=1&mute=1",
+            "https://www.youtube.com/embed/0JXUfhX7KiM?autoplay=1&mute=1",
+            "https://www.youtube.com/embed/BqWwKYA1pVw?autoplay=1&mute=1"
+        ];
+        let currentIndex = 0;
+
+        function loadVideo() {
+            const iframe = document.getElementById('videoPlayer');
+            iframe.src = videos[currentIndex];
+            currentIndex = (currentIndex + 1) % videos.length;
+        }
+
+        loadVideo();
+        setInterval(loadVideo, 30000); // Switch video every 30 seconds
+    </script>
+</body>
+</html>
